@@ -1083,11 +1083,25 @@ button {
     box-shadow: var(--shadow-xl);
 }
 
-.gallery-placeholder {
+.gallery-item img {
+    .gallery-item img {
     width: 100%;
-    height: 250px;
-    background: var(--bg-light);
-    overflow: hidden;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 1.25rem 1.25rem 0 0;
+    transition: var(--transition-base);
+    filter: brightness(0.9); 
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1);
+}
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
 }
 
 .gallery-caption {
