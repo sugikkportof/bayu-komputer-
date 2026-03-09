@@ -1,14 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pak Bayu | Solusi IT & Komputer Bali</title>
+  <title>Bayu Computer | Solusi IT Profesional</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -19,13 +18,13 @@
       theme: {
         extend: {
           colors: {
-            deepblue: '#0F172A',
-            neon: '#2DD4BF',
-            cloud: '#F8FAFC'
+            cyber: '#0B1120',
+            neon: '#00F0FF',
+            surface: '#1E293B'
           },
           fontFamily: {
-            playfair: ['"Playfair Display"', 'serif'],
-            montserrat: ['Montserrat', 'sans-serif']
+            tech: ['"Orbitron"', 'sans-serif'],
+            sans: ['Montserrat', 'sans-serif']
           }
         }
       }
@@ -34,106 +33,295 @@
 
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Montserrat', sans-serif; background-color: #F8FAFC; color: #0F172A; }
+    body { font-family: 'Montserrat', sans-serif; background-color: #0B1120; color: #F8FAFC; overflow-x: hidden; }
     
     /* Navbar Glassmorphism */
-    #navbar { transition: all 0.4s ease; border-bottom: 1px solid transparent; }
-    #navbar.scrolled { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding-top: 1rem; padding-bottom: 1rem; }
+    #navbar { transition: all 0.4s ease; border-bottom: 1px solid rgba(0, 240, 255, 0.1); background: rgba(11, 17, 32, 0.8); backdrop-filter: blur(12px); }
     
     /* Hero Gradient */
-    .hero-bg { background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80') center/cover fixed; }
+    .hero-bg { background: radial-gradient(circle at center, rgba(0, 240, 255, 0.15) 0%, rgba(11, 17, 32, 1) 70%), url('https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=1920&q=80') center/cover fixed; }
     
     /* Buttons */
-    .btn-neon { background: #2DD4BF; color: #0F172A; font-weight: 700; padding: 0.75rem 2rem; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(45, 212, 191, 0.3); }
-    .btn-neon:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(45, 212, 191, 0.5); background: #fff; }
-    .btn-outline { border: 2px solid #2DD4BF; color: #2DD4BF; font-weight: 600; padding: 0.75rem 2rem; border-radius: 50px; transition: all 0.3s ease; }
-    .btn-outline:hover { background: #2DD4BF; color: #0F172A; }
+    .btn-neon { background: transparent; color: #00F0FF; border: 2px solid #00F0FF; font-weight: 600; padding: 0.75rem 2rem; border-radius: 8px; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+    .btn-neon:hover { background: #00F0FF; color: #0B1120; box-shadow: 0 0 20px rgba(0, 240, 255, 0.6); }
+    
+    /* Service Filter & Cards */
+    .filter-btn { padding: 0.5rem 1.5rem; border-radius: 50px; border: 1px solid rgba(0,240,255,0.3); font-size: 0.8rem; font-weight: 600; transition: all 0.3s; color: #cbd5e1; background: transparent; cursor: pointer;}
+    .filter-btn.active, .filter-btn:hover { background: #00F0FF; color: #0B1120; border-color: #00F0FF; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
+    
+    .service-card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 16px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; gap: 1rem; cursor: pointer; backdrop-filter: blur(5px); }
+    .service-card:hover { transform: translateY(-8px); border-color: #00F0FF; box-shadow: 0 15px 30px rgba(0, 240, 255, 0.15); }
+    .service-card.hide { display: none; }
+    
+    /* Animated WA Button */
+    .wa-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #25D366; color: white; border-radius: 50px; text-align: center; font-size: 30px; z-index: 1000; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: transform 0.3s ease; }
+    .wa-float:hover { transform: scale(1.1); }
+    .wa-pulse { position: absolute; width: 100%; height: 100%; background: #25D366; border-radius: 50%; z-index: -1; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
 
-    /* Cards */
-    .service-card { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); transition: all 0.4s ease; border-bottom: 4px solid transparent; }
-    .service-card:hover { transform: translateY(-10px); border-bottom: 4px solid #2DD4BF; box-shadow: 0 20px 40px rgba(45, 212, 191, 0.15); }
+    /* Instagram Banner Grid */
+    .ig-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .ig-item { position: relative; overflow: hidden; aspect-ratio: 1/1; }
+    .ig-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; filter: grayscale(50%); }
+    .ig-item:hover img { transform: scale(1.1); filter: grayscale(0%); }
+    .ig-overlay { position: absolute; inset: 0; background: rgba(0,240,255,0.8); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; color: #0B1120; font-size: 2rem; }
+    .ig-item:hover .ig-overlay { opacity: 1; }
+    @media (max-width: 768px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
 
-  <nav id="navbar" class="fixed w-full z-50 py-5 px-6 md:px-12 text-white transition-all duration-300">
+  <nav id="navbar" class="fixed w-full z-50 py-4 px-6 md:px-12">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <a href="index.html" class="flex items-center gap-4 group">
-        <img src="https://i.postimg.cc/RVCFLVGP/IMG-20260309-WA0011.jpg" alt="Logo Pak Bayu" class="w-12 h-12 rounded-full object-cover shadow-lg border-2 border-neon group-hover:scale-110 transition-transform">
-        <div class="font-playfair font-bold text-2xl tracking-wider">BAYU<span class="text-neon">TECH</span></div>
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="https://i.postimg.cc/RVCFLVGP/IMG-20260309-WA0011.jpg" alt="Logo" class="w-10 h-10 rounded-full border border-neon">
+        <div class="font-tech font-bold text-xl tracking-wider text-white">BAYU <span class="text-neon">COMPUTER</span></div>
       </a>
-      <div class="hidden md:flex gap-8 items-center text-sm font-semibold tracking-wider">
-        <a href="#services" class="hover:text-neon transition-colors">Layanan</a>
-        <a href="profil.html" class="hover:text-neon transition-colors">Profil Sistem</a>
-        <a href="#contact" class="btn-neon text-xs uppercase tracking-widest">Hubungi Kami</a>
+      <div class="hidden md:flex gap-8 items-center text-xs font-semibold tracking-widest uppercase">
+        <a href="#layanan" class="hover:text-neon transition-colors">Layanan</a>
+        <a href="about.html" class="hover:text-neon transition-colors">Tentang Kami</a>
+        <a href="#ig" class="hover:text-neon transition-colors">Instagram</a>
       </div>
     </div>
   </nav>
 
-  <header class="hero-bg h-screen flex flex-col justify-center items-center text-center px-6 relative">
-    <div class="absolute inset-0 bg-deepblue/40"></div>
-    <div class="relative z-10 max-w-3xl" data-aos="zoom-in" data-aos-duration="1000">
-      <p class="text-neon font-bold tracking-[0.3em] uppercase mb-4 text-sm">Solusi IT Terpercaya di Bali</p>
-      <h1 class="font-playfair text-5xl md:text-7xl text-white mb-6 leading-tight drop-shadow-xl">Digitalisasi <br><span class="text-neon">Tanpa Batas</span></h1>
-      <p class="text-white/80 mb-10 text-sm md:text-base leading-relaxed">Kami hadir untuk memastikan infrastruktur teknologi Anda berjalan sempurna. Dari perbaikan perangkat keras hingga solusi jaringan enterprise.</p>
-      <div class="flex gap-4 justify-center">
-        <a href="#contact" class="btn-neon">Konsultasi Gratis</a>
-        <a href="profil.html" class="btn-outline">Lihat Profil Pak Bayu</a>
+  <header class="hero-bg h-screen flex flex-col justify-center px-6 relative">
+    <div class="max-w-7xl mx-auto w-full" data-aos="fade-up" data-aos-duration="1000">
+      <p class="text-neon font-tech tracking-[0.3em] uppercase mb-4 text-xs md:text-sm">> System Ready_</p>
+      <h1 class="font-tech text-4xl md:text-7xl text-white mb-6 leading-tight">Solusi IT <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-blue-500">Profesional & Cepat</span></h1>
+      <p class="text-white/70 mb-10 max-w-xl text-sm leading-relaxed border-l-2 border-neon pl-4">
+        Menerima perbaikan Laptop/PC, Rakit Komputer, Instalasi Jaringan, hingga Software. Bergaransi uang kembali dan siap melayani panggilan.
+      </p>
+      <div class="flex gap-4">
+        <a href="#layanan" class="btn-neon">Jelajahi Layanan</a>
       </div>
     </div>
   </header>
 
-  <section id="services" class="py-24 px-6 md:px-12 bg-cloud">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16" data-aos="fade-up">
-        <h2 class="font-playfair text-4xl text-deepblue font-bold mb-4">Layanan Utama</h2>
-        <div class="w-20 h-1 bg-neon mx-auto rounded-full"></div>
+  <section id="layanan" class="py-24 px-6 md:px-12 bg-cyber">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="font-tech text-3xl md:text-4xl text-white mb-4">Layanan <span class="text-neon">Sistem Kami</span></h2>
+        <p class="text-white/50 text-sm">Pilih kategori untuk melihat detail layanan Bayu Computer.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-12" id="filter-container" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">Semua Layanan</button>
+        <button class="filter-btn" data-filter="hardware">Hardware / PC</button>
+        <button class="filter-btn" data-filter="software">Software / Sistem</button>
+        <button class="filter-btn" data-filter="jaringan">Jaringan & CCTV</button>
+        <button class="filter-btn" data-filter="penjualan">Penjualan & Mitra</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="service-grid" data-aos="fade-up">
+        
+        <div class="service-card item-box hardware">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">💻</div>
+            <span class="text-[10px] bg-neon/10 text-neon px-2 py-1 rounded border border-neon/20 uppercase tracking-widest">Hardware</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Servis Laptop / PC Mati Total</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Perbaikan motherboard, ic power, dan kerusakan berat lainnya. Bergaransi uang kembali.</p>
+          </div>
+        </div>
+        
+        <div class="service-card item-box hardware">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">⚙️</div>
+            <span class="text-[10px] bg-neon/10 text-neon px-2 py-1 rounded border border-neon/20 uppercase tracking-widest">Hardware</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Ganti Keyboard & Sparepart</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Pergantian baterai, LCD, keyboard, RAM, SSD/HDD dengan komponen original dan berkualitas.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box hardware">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">🖥️</div>
+            <span class="text-[10px] bg-neon/10 text-neon px-2 py-1 rounded border border-neon/20 uppercase tracking-widest">Hardware</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Rakit PC Custom</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Jasa rakit komputer untuk kebutuhan gaming, desain grafis, arsitektur, atau administrasi kantor.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box software">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">💿</div>
+            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20 uppercase tracking-widest">Software</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Instalasi Software & OS</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Instalasi ulang Windows, Microsoft Office, aplikasi desain, dan pembaruan sistem operasi.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box software">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">🛡️</div>
+            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20 uppercase tracking-widest">Software</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Pembersihan Virus Malware</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Mendeteksi dan menghapus virus, ransomware, atau malware yang membuat sistem Anda lambat.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box software">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">🚀</div>
+            <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20 uppercase tracking-widest">Software</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Optimasi & Upgrade Sistem</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Tuning performa agar laptop/PC tidak lemot, boot lebih cepat, dan siap untuk multitasking berat.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box jaringan">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">🌐</div>
+            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-1 rounded border border-purple-500/20 uppercase tracking-widest">Jaringan</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Instalasi Jaringan (LAN/WiFi)</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Setup router, access point, tarik kabel LAN untuk kantor, sekolah, atau rumah pribadi.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box jaringan">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">📷</div>
+            <span class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-1 rounded border border-purple-500/20 uppercase tracking-widest">Jaringan</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Instalasi CCTV</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Pemasangan kamera keamanan CCTV dengan pantauan langsung dari HP Anda 24 Jam.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box penjualan">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">📦</div>
+            <span class="text-[10px] bg-orange-500/10 text-orange-400 px-2 py-1 rounded border border-orange-500/20 uppercase tracking-widest">Penjualan</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Jual Beli Laptop Baru/Second</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Tersedia unit laptop baru maupun bekas bergaransi. Kami juga melayani tukar tambah.</p>
+          </div>
+        </div>
+
+        <div class="service-card item-box penjualan">
+          <div class="flex justify-between items-start">
+            <div class="text-3xl text-neon">🤝</div>
+            <span class="text-[10px] bg-orange-500/10 text-orange-400 px-2 py-1 rounded border border-orange-500/20 uppercase tracking-widest">Penjualan</span>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Aksesoris & Rekanan SIPLAH</h3>
+            <p class="text-xs text-white/60 leading-relaxed">Penyediaan aksesoris lengkap dan siap menjadi rekanan pengadaan barang SIPLAH untuk sekolah.</p>
+          </div>
+        </div>
+
       </div>
       
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-16 h-16 bg-deepblue rounded-2xl flex items-center justify-center mb-6 text-neon text-3xl shadow-lg">💻</div>
-          <h3 class="font-bold text-xl text-deepblue mb-3">Hardware Repair</h3>
-          <p class="text-sm text-deepblue/70 leading-relaxed">Perbaikan komputer, laptop, dan perangkat keras dengan sparepart berkualitas dan teknisi berpengalaman.</p>
+      <div class="mt-12 p-6 rounded-2xl border border-neon/30 bg-gradient-to-r from-surface to-cyber flex flex-col md:flex-row justify-between items-center gap-6" data-aos="zoom-in">
+        <div>
+          <h4 class="font-tech text-xl text-white mb-1">Menerima Panggilan Darurat</h4>
+          <p class="text-xs text-white/60">Tidak sempat ke toko? Kami siap datang ke lokasi Anda di wilayah Singaraja.</p>
         </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-16 h-16 bg-deepblue rounded-2xl flex items-center justify-center mb-6 text-neon text-3xl shadow-lg">🌐</div>
-          <h3 class="font-bold text-xl text-deepblue mb-3">Network Setup</h3>
-          <p class="text-sm text-deepblue/70 leading-relaxed">Instalasi jaringan LAN/WAN, router setup, dan optimasi sinyal WiFi untuk rumah maupun kantor Anda.</p>
-        </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-16 h-16 bg-deepblue rounded-2xl flex items-center justify-center mb-6 text-neon text-3xl shadow-lg">⚙️</div>
-          <h3 class="font-bold text-xl text-deepblue mb-3">IT Consulting</h3>
-          <p class="text-sm text-deepblue/70 leading-relaxed">Konsultasi pengadaan alat IT, upgrade sistem, dan maintenance rutin untuk memaksimalkan umur perangkat.</p>
-        </div>
+        <a href="https://wa.me/6285738387791" target="_blank" class="btn-neon whitespace-nowrap text-sm">Panggil Teknisi</a>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="py-24 px-6 bg-deepblue text-center text-white relative overflow-hidden">
-    <div class="absolute top-0 right-0 w-64 h-64 bg-neon/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-neon/10 rounded-full blur-3xl"></div>
-    
-    <div class="relative z-10 max-w-2xl mx-auto" data-aos="zoom-in">
-      <h2 class="font-playfair text-4xl font-bold mb-6">Komputer Anda Bermasalah?</h2>
-      <p class="text-white/70 mb-10">Jangan biarkan masalah teknis menghambat produktivitas Anda. Hubungi kami sekarang untuk layanan respon cepat.</p>
-      <a href="https://wa.me/6281234567890" target="_blank" class="btn-neon inline-flex items-center gap-3 text-lg">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Chat via WhatsApp
+  <section id="ig" class="bg-surface pt-20 pb-0 overflow-hidden border-t border-neon/10">
+    <div class="max-w-7xl mx-auto px-6 mb-10 flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-up">
+      <div>
+        <h2 class="font-tech text-3xl text-white mb-2">Portofolio <span class="text-neon">Kerja</span></h2>
+        <p class="text-white/60 text-sm max-w-md">Kumpulan dokumentasi perbaikan laptop, rakit PC, hingga instalasi jaringan dari tim kami di lapangan.</p>
+      </div>
+      <a href="https://instagram.com/bayucomputersingaraja" target="_blank" class="flex items-center gap-3 text-neon font-bold hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        @bayucomputersingaraja
+      </a>
+    </div>
+
+    <div class="ig-grid w-full">
+      <a href="https://instagram.com/bayucomputersingaraja" target="_blank" class="ig-item" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://i.postimg.cc/Qtxmzzv4/Screenshot-2024-11-20-17-22-26-470-com-instagram-android.jpg" alt="Laptop Repair">
+        <div class="ig-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 12a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
+      </a>
+      <a href="https://instagram.com/bayucomputersingaraja" target="_blank" class="ig-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=600&q=80" alt="PC Build">
+        <div class="ig-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 12a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
+      </a>
+      <a href="https://instagram.com/bayucomputersingaraja" target="_blank" class="ig-item" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Network Server">
+        <div class="ig-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 12a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
+      </a>
+      <a href="https://instagram.com/bayucomputersingaraja" target="_blank" class="ig-item" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=600&q=80" alt="Tower Climb">
+        <div class="ig-overlay"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 12a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z"/><path d="M10 8l6 4-6 4V8z"/></svg></div>
       </a>
     </div>
   </section>
 
-  <footer class="bg-[#0B1120] text-white/50 py-8 text-center text-xs tracking-widest uppercase">
-    <p>© 2026 Pak Bayu Computer. Crafted by Gede Sugiartawan.</p>
+  <a href="https://wa.me/6285738387791" target="_blank" class="wa-float" aria-label="WhatsApp">
+    <div class="wa-pulse"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+    </svg>
+  </a>
+
+  <footer class="bg-[#050810] py-10 px-6 border-t border-neon/20">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-white/50 text-xs font-tech tracking-widest uppercase">
+        © 2026 Bayu Computer.
+      </div>
+      <div class="text-white/30 text-[10px] tracking-widest uppercase">
+        Engineered by Gede Sugiartawan
+      </div>
+    </div>
   </footer>
 
   <script>
     AOS.init({ once: true, duration: 800 });
+    
+    // Navbar Background on Scroll
     window.addEventListener('scroll', () => {
       const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) { nav.classList.add('scrolled'); nav.classList.remove('py-5'); nav.classList.add('py-3'); }
-      else { nav.classList.remove('scrolled'); nav.classList.remove('py-3'); nav.classList.add('py-5'); }
+      if (window.scrollY > 50) { nav.classList.add('shadow-lg'); }
+      else { nav.classList.remove('shadow-lg'); }
+    });
+
+    // SISTEM FILTER LAYANAN (SEPERTI SOCIAL COFFEE)
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Hilangkan class active dari semua tombol
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Tambahkan class active ke tombol yang diklik
+        btn.classList.add('active');
+        
+        const filterValue = btn.getAttribute('data-filter');
+        
+        // Logika Filter dengan Animasi CSS
+        serviceCards.forEach(card => {
+          if (filterValue === 'all' || card.classList.contains(filterValue)) {
+            card.style.display = 'flex';
+            setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px)';
+            setTimeout(() => { card.style.display = 'none'; }, 300);
+          }
+        });
+      });
     });
   </script>
 </body>
