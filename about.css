@@ -1,0 +1,51 @@
+/* =========================================
+   TEMA KHUSUS ABOUT.HTML (CYBER & TERMINAL)
+   ========================================= */
+
+/* Background Dasar & Font */
+body { 
+  background-color: #0B1120; 
+  color: #F8FAFC; 
+  font-family: 'Montserrat', sans-serif; 
+  overflow-x: hidden; 
+}
+
+/* Efek Kaca (Glassmorphism) di Navbar */
+#navbar { 
+  background: rgba(11, 17, 32, 0.9); 
+  backdrop-filter: blur(12px); 
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1); 
+}
+
+/* Kotak Terminal / CMD Style */
+.terminal-box { 
+  background: rgba(30, 41, 59, 0.4); 
+  border: 1px solid rgba(0,240,255,0.2); 
+  border-left: 4px solid #00F0FF; 
+  border-radius: 8px; 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Animasi Teks Ngetik Sendiri (Typing Effect) */
+.typing-text { 
+  border-right: 3px solid #00F0FF; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  animation: typing 3s steps(40, end), blink .75s step-end infinite; 
+}
+
+@keyframes typing { 
+  from { width: 0 } 
+  to { width: 100% } 
+}
+
+@keyframes blink { 
+  from, to { border-color: transparent } 
+  50% { border-color: #00F0FF; } 
+}
+
+/* Efek Foto Glowing (Neon Border) */
+.glow-img { 
+  border: 2px solid rgba(0,240,255,0.5); 
+  box-shadow: 0 0 25px rgba(0,240,255,0.3); 
+}
